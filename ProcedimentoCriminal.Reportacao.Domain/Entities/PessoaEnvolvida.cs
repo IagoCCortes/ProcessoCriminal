@@ -1,6 +1,6 @@
 ﻿using ProcedimentoCriminal.Core.Domain;
 
-namespace ProcedimentoCriminal.Ocorrencia.Domain.Entities
+namespace ProcedimentoCriminal.Reportacao.Domain.Entities
 {
     public class PessoaEnvolvida : Entity
     {

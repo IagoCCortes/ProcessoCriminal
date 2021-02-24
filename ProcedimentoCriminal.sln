@@ -2,13 +2,21 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F6D58BAF-0F1A-449D-9672-195064168F3A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ocorrencia", "Ocorrencia", "{E7D5D104-2D0D-459A-87B5-B9E6276F5F27}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reportacao", "Reportacao", "{E7D5D104-2D0D-459A-87B5-B9E6276F5F27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Ocorrencia.Domain", "ProcedimentoCriminal.Ocorrencia.Domain\ProcedimentoCriminal.Ocorrencia.Domain.csproj", "{BF128237-9B4D-4C4D-93C8-D2C97384F916}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Reportacao.Domain", "ProcedimentoCriminal.Reportacao.Domain\ProcedimentoCriminal.Reportacao.Domain.csproj", "{BF128237-9B4D-4C4D-93C8-D2C97384F916}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FB4DA2CD-85BF-4E9A-9EFA-B31EB25C2E18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Core.Domain", "ProcedimentoCriminal.Core.Domain\ProcedimentoCriminal.Core.Domain.csproj", "{4A4C375F-62E1-415C-A445-C9A18D0FC5D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Investigacao", "Investigacao", "{3F062A02-050A-42F1-B317-E8FE50BEF683}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Investigacao.Domain", "ProcedimentoCriminal.Investigacao.Domain\ProcedimentoCriminal.Investigacao.Domain.csproj", "{352DB416-9C51-403F-B295-7693F10A8A6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A4770E08-6FC6-4741-8732-AC5E3488DCC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Reportacao.Domain.Tests", "ProcedimentoCriminal.Reportacao.Domain.Tests\ProcedimentoCriminal.Reportacao.Domain.Tests.csproj", "{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +28,10 @@ Global
 		{BF128237-9B4D-4C4D-93C8-D2C97384F916} = {E7D5D104-2D0D-459A-87B5-B9E6276F5F27}
 		{FB4DA2CD-85BF-4E9A-9EFA-B31EB25C2E18} = {F6D58BAF-0F1A-449D-9672-195064168F3A}
 		{4A4C375F-62E1-415C-A445-C9A18D0FC5D8} = {FB4DA2CD-85BF-4E9A-9EFA-B31EB25C2E18}
+		{3F062A02-050A-42F1-B317-E8FE50BEF683} = {F6D58BAF-0F1A-449D-9672-195064168F3A}
+		{352DB416-9C51-403F-B295-7693F10A8A6E} = {3F062A02-050A-42F1-B317-E8FE50BEF683}
+		{A4770E08-6FC6-4741-8732-AC5E3488DCC2} = {E7D5D104-2D0D-459A-87B5-B9E6276F5F27}
+		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC} = {A4770E08-6FC6-4741-8732-AC5E3488DCC2}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BF128237-9B4D-4C4D-93C8-D2C97384F916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +42,13 @@ Global
 		{4A4C375F-62E1-415C-A445-C9A18D0FC5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A4C375F-62E1-415C-A445-C9A18D0FC5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A4C375F-62E1-415C-A445-C9A18D0FC5D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352DB416-9C51-403F-B295-7693F10A8A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352DB416-9C51-403F-B295-7693F10A8A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352DB416-9C51-403F-B295-7693F10A8A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352DB416-9C51-403F-B295-7693F10A8A6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
