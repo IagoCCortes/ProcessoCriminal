@@ -1,0 +1,2 @@
+- Invariants will be checked and DomainExceptions will be thrown when violated
+- When there is more than one way to create an object use Creational Methods with intention-revealing names    

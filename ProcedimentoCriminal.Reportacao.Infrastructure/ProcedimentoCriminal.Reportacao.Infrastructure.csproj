@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.0.78" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ProcedimentoCriminal.Reportacao.Application\ProcedimentoCriminal.Reportacao.Application.csproj" />
+      <ProjectReference Include="..\ProcedimentoCriminal.Reportacao.Domain\ProcedimentoCriminal.Reportacao.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
