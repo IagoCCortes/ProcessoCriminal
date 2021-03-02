@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using ProcedimentoCriminal.Core.Domain;
 using ProcedimentoCriminal.Reportacao.Domain.Entities;
@@ -16,32 +17,11 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Tests.Entities
             _ocorrencia = new Ocorrencia("test", Tipo.Flagrante, "dpTest", Natureza.Criminal, DateTime.Now,
                 DateTime.Now,
                 new Endereco(123, string.Empty, string.Empty, String.Empty, String.Empty, String.Empty, String.Empty),
-                false, false, String.Empty, String.Empty);
-        }
-        
-        [Fact]
-        public void VincularPessoaEnvolvida_GivenNullPessoa_ThrowsDomainException()
-        {
-            // arrange
-            Action action = () => _ocorrencia.VincularPessoaEnvolvida(null);
-
-            // act & asset
-            action.Should().Throw<DomainException>();
+                false, false, String.Empty, String.Empty, new List<PessoaEnvolvida>(),
+                new List<UnidadeMovel>
+                    {new UnidadeMovel(Orgao.PMDF, String.Empty, String.Empty, String.Empty, String.Empty)});
         }
 
-        [Fact]
-        public void VincularPessoaEnvolvida_GivenPessoa_ShouldUpdatePessoasVinculadas()
-        {
-            // arrange
-            var pessoa = new PessoaEnvolvida("test", String.Empty, 'H', 12345678, "tester", String.Empty, String.Empty);
-
-            // act
-            _ocorrencia.VincularPessoaEnvolvida(pessoa);
-
-            // asset
-            _ocorrencia.PessoasEnvolvidas.Should().HaveCount(1);
-        }
-        
         [Fact]
         public void VincularInquerito_GivenEmptyGuid_ThrowsDomainException()
         {
@@ -63,29 +43,6 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Tests.Entities
 
             // asset
             _ocorrencia.IdInquerito.Should().Be(idInquerito);
-        }
-        
-        [Fact]
-        public void VincularUnidadeMovel_GivenNullUnidadeMovel_ThrowsDomainException()
-        {
-            // arrange
-            Action action = () => _ocorrencia.VincularUnidadeMovel(null);
-
-            // act & asset
-            action.Should().Throw<DomainException>();
-        }
-
-        [Fact]
-        public void VincularUnidadeMovel_GivenUnidadeMovel_ShouldSetUnidadeMovel()
-        {
-            // arrange
-            var unidadeMovel = new UnidadeMovel(Orgao.PMDF, String.Empty, String.Empty, String.Empty, String.Empty);
-
-            // act
-            _ocorrencia.VincularUnidadeMovel(unidadeMovel);
-
-            // asset
-            _ocorrencia.UnidadeMovel.Should().Be(unidadeMovel);
         }
     }
 }

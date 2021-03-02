@@ -18,6 +18,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A4770E08
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Reportacao.Domain.Tests", "ProcedimentoCriminal.Reportacao.Domain.Tests\ProcedimentoCriminal.Reportacao.Domain.Tests.csproj", "{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Reportacao.Infrastructure", "ProcedimentoCriminal.Reportacao.Infrastructure\ProcedimentoCriminal.Reportacao.Infrastructure.csproj", "{933F0CAB-936F-4871-ADF3-0B20715EDEB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Reportacao.Application", "ProcedimentoCriminal.Reportacao.Application\ProcedimentoCriminal.Reportacao.Application.csproj", "{7C2E8CD2-E795-4594-8F6D-669DE73C7827}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Core.Application", "ProcedimentoCriminal.Core.Application\ProcedimentoCriminal.Core.Application.csproj", "{F64ADD1E-4821-4C8E-A1E6-244419943E21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Reportacao.WebApi", "ProcedimentoCriminal.Reportacao.WebApi\ProcedimentoCriminal.Reportacao.WebApi.csproj", "{24888FA3-C769-41C6-A09C-1DB671769630}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +40,10 @@ Global
 		{352DB416-9C51-403F-B295-7693F10A8A6E} = {3F062A02-050A-42F1-B317-E8FE50BEF683}
 		{A4770E08-6FC6-4741-8732-AC5E3488DCC2} = {E7D5D104-2D0D-459A-87B5-B9E6276F5F27}
 		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC} = {A4770E08-6FC6-4741-8732-AC5E3488DCC2}
+		{933F0CAB-936F-4871-ADF3-0B20715EDEB5} = {E7D5D104-2D0D-459A-87B5-B9E6276F5F27}
+		{7C2E8CD2-E795-4594-8F6D-669DE73C7827} = {E7D5D104-2D0D-459A-87B5-B9E6276F5F27}
+		{F64ADD1E-4821-4C8E-A1E6-244419943E21} = {FB4DA2CD-85BF-4E9A-9EFA-B31EB25C2E18}
+		{24888FA3-C769-41C6-A09C-1DB671769630} = {E7D5D104-2D0D-459A-87B5-B9E6276F5F27}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BF128237-9B4D-4C4D-93C8-D2C97384F916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -50,5 +62,21 @@ Global
 		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDB47A33-FD28-4AAD-A5EE-EC55CD6556CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{933F0CAB-936F-4871-ADF3-0B20715EDEB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{933F0CAB-936F-4871-ADF3-0B20715EDEB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{933F0CAB-936F-4871-ADF3-0B20715EDEB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{933F0CAB-936F-4871-ADF3-0B20715EDEB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C2E8CD2-E795-4594-8F6D-669DE73C7827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2E8CD2-E795-4594-8F6D-669DE73C7827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2E8CD2-E795-4594-8F6D-669DE73C7827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2E8CD2-E795-4594-8F6D-669DE73C7827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64ADD1E-4821-4C8E-A1E6-244419943E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64ADD1E-4821-4C8E-A1E6-244419943E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64ADD1E-4821-4C8E-A1E6-244419943E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64ADD1E-4821-4C8E-A1E6-244419943E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24888FA3-C769-41C6-A09C-1DB671769630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24888FA3-C769-41C6-A09C-1DB671769630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24888FA3-C769-41C6-A09C-1DB671769630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24888FA3-C769-41C6-A09C-1DB671769630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

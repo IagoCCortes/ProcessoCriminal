@@ -4,6 +4,6 @@ namespace ProcedimentoCriminal.Core.Domain
 {
     public interface IHasDomainEvent
     {
-        List<DomainEvent> DomainEvents { get; set; }
+        List<DomainEvent> DomainEvents { get; }
     }
 }

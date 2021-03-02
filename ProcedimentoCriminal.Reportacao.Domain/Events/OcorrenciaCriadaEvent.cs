@@ -2,11 +2,11 @@
 
 namespace ProcedimentoCriminal.Reportacao.Domain.Events
 {
-    public class OficiarOcorrenciaEvent : DomainEvent
+    public class OcorrenciaCriadaEvent : DomainEvent
     {
         public string Descricao { get; }
 
-        public OficiarOcorrenciaEvent(string descricao)
+        public OcorrenciaCriadaEvent(string descricao)
         {
             Descricao = descricao;
         }
