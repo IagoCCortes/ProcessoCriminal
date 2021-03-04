@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using FluentValidation;
-using ProcedimentoCriminal.Reportacao.Domain.Entities;
+using ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.AbrirOcorrencia;
 
 namespace ProcedimentoCriminal.Reportacao.Application.Validations
 {
-    public class PessoaEnvolvidaValidations : AbstractValidator<PessoaEnvolvida>
+    public class PessoaEnvolvidaDtoValidations : AbstractValidator<PessoaEnvolvidaDto>
     {
-        public PessoaEnvolvidaValidations()
+        public PessoaEnvolvidaDtoValidations()
         {
             RuleFor(p => p.Envolvimento).NotEmpty().WithMessage("Envolvimento deve ser declarado");
             RuleFor(p => p.Nome).NotEmpty().WithMessage("Nome deve ser declarado");

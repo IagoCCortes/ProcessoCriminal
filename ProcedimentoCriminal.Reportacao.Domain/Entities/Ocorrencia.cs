@@ -17,7 +17,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
         public Endereco EnderecoFato { get; }
         public bool PraticadoPorMenor { get; }
         public bool LocalPericiado { get; }
-        public Guid IdInquerito { get; private set; }
+        public Guid? IdInquerito { get; private set; }
         public string TipoLocal { get; }
         public string ObjetoMeioEmpregado { get; }
         public List<PessoaEnvolvida> PessoasEnvolvidas { get; }
@@ -26,7 +26,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
         public Ocorrencia(string identificadorOcorrencia, Tipo tipo, string delegaciaPoliciaApuracao, Natureza natureza,
             DateTime dataHoraFato, DateTime dataHoraComunicacao, Endereco enderecoFato, bool praticadoPorMenor,
             bool localPericiado, string tipoLocal, string objetoMeioEmpregado,
-            List<PessoaEnvolvida> pessoasEnvolvidas, List<UnidadeMovel> unidadesMoveis)
+            List<PessoaEnvolvida> pessoasEnvolvidas, List<UnidadeMovel> unidadesMoveis) : base()
         {
             IdentificadorOcorrencia = identificadorOcorrencia;
             Tipo = tipo;
@@ -41,8 +41,8 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             ObjetoMeioEmpregado = objetoMeioEmpregado;
             PessoasEnvolvidas = pessoasEnvolvidas;
             UnidadesMoveis = unidadesMoveis;
-            
-            DomainEvents.Add(new OcorrenciaCriadaEvent("Test"));
+
+            DomainEvents = new List<DomainEvent> {new OcorrenciaCriadaEvent("Test")};
         }
 
         public void VincularInquerito(Guid idInquerito)
@@ -52,6 +52,6 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             IdInquerito = idInquerito;
         }
 
-        public List<DomainEvent> DomainEvents { get; private set; }
+        public List<DomainEvent> DomainEvents { get; }
     }
 }

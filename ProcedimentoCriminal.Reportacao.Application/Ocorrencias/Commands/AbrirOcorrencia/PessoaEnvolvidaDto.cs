@@ -1,4 +1,4 @@
-﻿namespace ProcedimentoCriminal.Reportacao.Application.Dtos
+﻿namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.AbrirOcorrencia
 {
     public class PessoaEnvolvidaDto
     {

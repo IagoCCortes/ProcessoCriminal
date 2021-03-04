@@ -1,4 +1,5 @@
-﻿using ProcedimentoCriminal.Core.Domain;
+﻿using System;
+using ProcedimentoCriminal.Core.Domain;
 
 namespace ProcedimentoCriminal.Reportacao.Domain.Entities
 {
@@ -11,8 +12,10 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
         public string Profissao { get; private set; }
         public string GravidadeLesoes { get; private set; }
         public string RacaCor { get; private set; }
+        public Guid IdOcorrencia { get; private set; }
 
-        public PessoaEnvolvida(string nome, string envolvimento, char sexo, string cpf, string profissao, string gravidadeLesoes, string racaCor)
+        public PessoaEnvolvida(string nome, string envolvimento, char sexo, string cpf, string profissao,
+            string gravidadeLesoes, string racaCor) : base()
         {
             Nome = nome;
             Envolvimento = envolvimento;

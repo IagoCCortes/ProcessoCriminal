@@ -10,10 +10,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ProcedimentoCriminal.Reportacao.Application\ProcedimentoCriminal.Reportacao.Application.csproj" />
       <ProjectReference Include="..\ProcedimentoCriminal.Reportacao.Infrastructure\ProcedimentoCriminal.Reportacao.Infrastructure.csproj" />
     </ItemGroup>

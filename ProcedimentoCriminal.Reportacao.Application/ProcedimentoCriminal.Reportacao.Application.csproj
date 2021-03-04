@@ -9,10 +9,4 @@
       <ProjectReference Include="..\ProcedimentoCriminal.Reportacao.Domain\ProcedimentoCriminal.Reportacao.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Ocorrencias\Queries\FetchNaturezas" />
-      <Folder Include="Ocorrencias\Queries\FetchOrgaos" />
-      <Folder Include="Ocorrencias\Queries\FetchTipos" />
-    </ItemGroup>
-
 </Project>

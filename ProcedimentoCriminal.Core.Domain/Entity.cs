@@ -10,11 +10,15 @@ namespace ProcedimentoCriminal.Core.Domain
         public DateTime? LastModified { get; private set; }
         public string LastModifiedBy { get; private set; }
 
-        public void Create(string createdBy)
+        protected Entity()
         {
             Id = Guid.NewGuid();
             Created = DateTime.Now;
-            CreatedBy = createdBy;
+        }
+
+        protected void SetCreatedBy(string creator)
+        {
+            CreatedBy = creator;
         }
 
         public void Update(string updatedBy)

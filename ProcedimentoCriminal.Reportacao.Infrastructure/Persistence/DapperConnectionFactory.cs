@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence
 {
@@ -16,7 +17,7 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence
 
         public async Task<IDbConnection> CreateConnectionAsync()
         {
-            var sqlConnection = new SqlConnection(_connectionString);
+            var sqlConnection = new MySqlConnection(_connectionString);
             await sqlConnection.OpenAsync();
             return sqlConnection;
         }

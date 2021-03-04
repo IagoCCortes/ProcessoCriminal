@@ -12,7 +12,7 @@ namespace ProcedimentoCriminal.Core.Domain
         public string Cidade { get; }
         public string Estado { get; }
 
-        public Endereco(int cep, string endereco, string numeroResidencia, string complemento, string bairro, 
+        public Endereco(int cep, string endereco, string numeroResidencia, string complemento, string bairro,
             string cidade, string estado)
         {
             CEP = cep;
@@ -23,7 +23,7 @@ namespace ProcedimentoCriminal.Core.Domain
             Cidade = cidade;
             Estado = estado;
         }
-        
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return CEP;
@@ -34,5 +34,8 @@ namespace ProcedimentoCriminal.Core.Domain
             yield return Cidade;
             yield return Estado;
         }
+        
+        public override string ToString()
+            => $"{CEP};{EnderecoDescricao};{NumeroResidencia};{Complemento};{Bairro};{Cidade};{Estado}";
     }
 }

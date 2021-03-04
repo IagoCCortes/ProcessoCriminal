@@ -3,6 +3,5 @@
     public enum Tipo
     {
         Flagrante = 0,
-        
     }
 }

@@ -2,7 +2,10 @@
 {
     public enum Orgao
     {
-        CBMDF = 0,
-        PMDF = 1,
+        CBM = 0,
+        PM = 1,
+        DETRAN = 2,
+        PC = 3,
+        PF = 4,
     }
 }

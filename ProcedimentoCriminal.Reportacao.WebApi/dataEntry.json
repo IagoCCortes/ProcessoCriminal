@@ -1,0 +1,40 @@
+﻿{
+  "identificadorOcorrencia": "1234/2021-1",
+  "tipo": 0,
+  "delegaciaPoliciaApuracao": "13a DP",
+  "natureza": 0,
+  "dataHoraFato": "2021-02-28T13:06:34.143Z",
+  "enderecoFato": {
+    "cep": 72001670,
+    "enderecoDescricao": "SHVP ch114-E",
+    "numeroResidencia": "1",
+    "complemento": "",
+    "bairro": "Taguatinga Norte",
+    "cidade": "Taguatinga",
+    "estado": "DF"
+  },
+  "praticadoPorMenor": true,
+  "localPericiado": true,
+  "tipoLocal": "Escola",
+  "objetoMeioEmpregado": "Arma de fogo",
+  "pessoasEnvolvidas": [
+    {
+      "nome": "Sophie Emerich",
+      "envolvimento": "Vítima",
+      "sexo": "F",
+      "cpf": "04951147565",
+      "profissao": "Autora",
+      "gravidadeLesoes": "leves",
+      "racaCor": "Branca"
+    }
+  ],
+  "unidadesMoveis": [
+    {
+      "orgao": 0,
+      "prefixoVTR": "OVN",
+      "responsavel": "Muriel Laplace",
+      "matriculaResponsavel": "1452PL",
+      "unidadeResponsavel": "145U8"
+    }
+  ]
+}
