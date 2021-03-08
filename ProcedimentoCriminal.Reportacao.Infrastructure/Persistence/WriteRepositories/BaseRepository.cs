@@ -9,11 +9,11 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteReposi
 {
     public abstract class BaseRepository
     {
-        protected readonly DapperConnectionFactory ConnectionFactory;
+        protected readonly IDapperConnectionFactory ConnectionFactory;
         protected readonly IDomainEventService DomainEventService;
         protected readonly ICurrentUserService CurrentUserService;
 
-        public BaseRepository(DapperConnectionFactory connectionFactory, IDomainEventService domainEventService, ICurrentUserService currentUserService)
+        public BaseRepository(IDapperConnectionFactory connectionFactory, IDomainEventService domainEventService, ICurrentUserService currentUserService)
         {
             ConnectionFactory = connectionFactory;
             DomainEventService = domainEventService;

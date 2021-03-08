@@ -16,7 +16,7 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Queries.FetchT
         public Task<Dictionary<int, string>> Handle(FetchTiposQuery request, CancellationToken cancellationToken)
         {
             var result = new Dictionary<int, string>();
-            foreach (var tipo in Enum.GetValues<Tipo>())
+            foreach (var tipo in Enum.GetValues<TipoOcorrencia>())
                 result.Add((int) tipo, tipo.ToString());
 
             return Task.FromResult(result);

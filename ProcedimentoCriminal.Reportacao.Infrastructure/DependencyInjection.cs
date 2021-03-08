@@ -17,11 +17,13 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure
             IConfiguration configuration)
         {
             var connectionString = configuration.GetSection("DapperSettings").GetSection("ConnectionString").Value;
-            var connectionFactory = new DapperConnectionFactory(connectionString);
-            services.AddScoped<IOcorrenciaRepository>(provider => new OcorrenciaRepository(connectionFactory,
+            services.AddSingleton<IDapperConnectionFactory>(new DapperConnectionFactory(connectionString));
+            services.AddScoped<IOcorrenciaRepository>(provider => new OcorrenciaRepository(
+                provider.GetRequiredService<IDapperConnectionFactory>(),
                 provider.GetRequiredService<IDomainEventService>(),
                 provider.GetRequiredService<ICurrentUserService>()));
-            services.AddScoped<IOcorrenciaReadRepository>(provider => new OcorrenciaReadRepository(connectionFactory));
+            services.AddScoped<IOcorrenciaReadRepository>(provider =>
+                new OcorrenciaReadRepository(provider.GetRequiredService<IDapperConnectionFactory>()));
             services.AddScoped<IDomainEventService, DomainEventService>();
             services.AddTransient<IDateTime, DateTimeService>();
             return services;

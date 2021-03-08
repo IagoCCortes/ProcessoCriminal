@@ -16,7 +16,7 @@ namespace ProcedimentoCriminal.Core.Domain
             Created = DateTime.Now;
         }
 
-        protected void SetCreatedBy(string creator)
+        public void SetCreatedBy(string creator)
         {
             CreatedBy = creator;
         }

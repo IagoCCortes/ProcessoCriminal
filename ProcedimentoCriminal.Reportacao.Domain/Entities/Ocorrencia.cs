@@ -9,7 +9,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
     public class Ocorrencia : Entity, IAggregateRoot, IHasDomainEvent
     {
         public string IdentificadorOcorrencia { get; }
-        public Tipo Tipo { get; }
+        public TipoOcorrencia TipoOcorrencia { get; }
         public string DelegaciaPoliciaApuracao { get; }
         public Natureza Natureza { get; }
         public DateTime DataHoraFato { get; }
@@ -17,19 +17,18 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
         public Endereco EnderecoFato { get; }
         public bool PraticadoPorMenor { get; }
         public bool LocalPericiado { get; }
-        public Guid? IdInquerito { get; private set; }
         public string TipoLocal { get; }
         public string ObjetoMeioEmpregado { get; }
         public List<PessoaEnvolvida> PessoasEnvolvidas { get; }
         public List<UnidadeMovel> UnidadesMoveis { get; }
 
-        public Ocorrencia(string identificadorOcorrencia, Tipo tipo, string delegaciaPoliciaApuracao, Natureza natureza,
+        public Ocorrencia(string identificadorOcorrencia, TipoOcorrencia tipoOcorrencia, string delegaciaPoliciaApuracao, Natureza natureza,
             DateTime dataHoraFato, DateTime dataHoraComunicacao, Endereco enderecoFato, bool praticadoPorMenor,
             bool localPericiado, string tipoLocal, string objetoMeioEmpregado,
             List<PessoaEnvolvida> pessoasEnvolvidas, List<UnidadeMovel> unidadesMoveis) : base()
         {
             IdentificadorOcorrencia = identificadorOcorrencia;
-            Tipo = tipo;
+            TipoOcorrencia = tipoOcorrencia;
             DelegaciaPoliciaApuracao = delegaciaPoliciaApuracao;
             Natureza = natureza;
             DataHoraFato = dataHoraFato;
@@ -43,13 +42,6 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             UnidadesMoveis = unidadesMoveis;
 
             DomainEvents = new List<DomainEvent> {new OcorrenciaCriadaEvent("Test")};
-        }
-
-        public void VincularInquerito(Guid idInquerito)
-        {
-            if (idInquerito == Guid.Empty) throw new DomainException("Nenhum identificador de Inquérito passado");
-
-            IdInquerito = idInquerito;
         }
 
         public List<DomainEvent> DomainEvents { get; }

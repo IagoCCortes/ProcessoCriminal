@@ -1,7 +1,7 @@
 ﻿namespace ProcedimentoCriminal.Reportacao.Domain.Enums
 {
-    public enum Tipo
+    public enum TipoOcorrencia
     {
-        Flagrante = 0,
+        Flagrante = 1,
     }
 }

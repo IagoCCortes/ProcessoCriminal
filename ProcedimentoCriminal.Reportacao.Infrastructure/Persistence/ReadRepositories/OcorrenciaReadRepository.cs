@@ -5,18 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using ProcedimentoCriminal.Reportacao.Application.Interfaces.ReadRepositories;
-using ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.AbrirOcorrencia;
 using ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Queries.FetchOcorrenciaById;
 using ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Queries.FilterOcorrencias;
-using ProcedimentoCriminal.Reportacao.Domain.Entities;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadRepositories
 {
     public class OcorrenciaReadRepository : IOcorrenciaReadRepository
     {
-        private readonly DapperConnectionFactory _connectionFactory;
+        private readonly IDapperConnectionFactory _connectionFactory;
 
-        public OcorrenciaReadRepository(DapperConnectionFactory connectionFactory)
+        public OcorrenciaReadRepository(IDapperConnectionFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }
@@ -32,8 +30,8 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadReposit
                 "o.created as Created, o.created_by as CreatedBy, " +
                 "(SELECT COUNT(*) FROM pessoas_envolvidas p WHERE id_ocorrencia = o.id) 'PessoasEnvolvidas', " +
                 "(SELECT COUNT(*) FROM unidades_moveis u WHERE id_ocorrencia = o.id) 'UnidadesMoveis' FROM ocorrencias o " +
-                "LEFT JOIN pessoas_envolvidas p ON o.id = p.id_ocorrencia" +
-                "LEFT JOIN unidades_moveis u on o.id = u.id_ocorrencia" +
+                "LEFT JOIN pessoas_envolvidas p ON o.id = p.id_ocorrencia " +
+                "LEFT JOIN unidades_moveis u on o.id = u.id_ocorrencia " +
                 "WHERE 42 = 42");
 
             if (!string.IsNullOrWhiteSpace(query.IdentificadorOcorrencia))
@@ -61,13 +59,13 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadReposit
                 sql.Append(" AND LOWER(objeto_meio_empregado) LIKE @ObjetoMeioEmpregado");
 
             if (query.CriadoDe.HasValue)
-                sql.Append(" AND created > @CriadoDe");
+                sql.Append(" AND o.created > @CriadoDe");
 
             if (query.CriadoAte.HasValue)
-                sql.Append(" AND created < @CriadoAte");
+                sql.Append(" AND o.created < @CriadoAte");
 
             if (!string.IsNullOrWhiteSpace(query.PessoaEnvolvidaNome))
-                sql.Append(" AND LOWER(nome) LIKE @PessoaEnvolvidaNome");
+                sql.Append(" AND LOWER(nome) LIKE @PessoaEnvolvidaNome;");
 
             if (!string.IsNullOrWhiteSpace(query.PessoaEnvolvidaEnvolvimento))
                 sql.Append(" AND LOWER(envolvimento) LIKE @PessoaEnvolvidaEnvolvimento");

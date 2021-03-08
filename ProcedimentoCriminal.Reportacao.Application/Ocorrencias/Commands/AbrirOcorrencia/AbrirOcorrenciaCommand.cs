@@ -59,7 +59,7 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.Abrir
                     unidade.matriculaResponsavel, unidade.UnidadeResponsavel));
             }
 
-            var ocorrencia = new Ocorrencia(request.IdentificadorOcorrencia, (Tipo) request.Tipo,
+            var ocorrencia = new Ocorrencia(request.IdentificadorOcorrencia, (TipoOcorrencia) request.Tipo,
                 request.DelegaciaPoliciaApuracao, (Natureza) request.Natureza, request.DataHoraFato, DateTime.UtcNow, endereco,
                 request.PraticadoPorMenor, request.LocalPericiado, request.TipoLocal, request.ObjetoMeioEmpregado,
                 pessoasEnvolvidas, unidadesMoveis);

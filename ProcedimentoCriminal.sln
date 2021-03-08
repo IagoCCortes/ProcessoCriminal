@@ -26,6 +26,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Core.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Reportacao.WebApi", "ProcedimentoCriminal.Reportacao.WebApi\ProcedimentoCriminal.Reportacao.WebApi.csproj", "{24888FA3-C769-41C6-A09C-1DB671769630}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Repotacao.Application.Tests", "ProcedimentoCriminal.Repotacao.Application.Tests\ProcedimentoCriminal.Repotacao.Application.Tests.csproj", "{B246AE0B-A342-41C1-955E-C98C04DE4819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Investigacao.Application", "ProcedimentoCriminal.Investigacao.Application\ProcedimentoCriminal.Investigacao.Application.csproj", "{28B7A2A5-AD7C-4AEE-914A-E81245E73ED1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Investigacao.Infrastructure", "ProcedimentoCriminal.Investigacao.Infrastructure\ProcedimentoCriminal.Investigacao.Infrastructure.csproj", "{ED6A62FE-600F-484D-BE8E-B83DFCFC123F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcedimentoCriminal.Investigacao.WebApi", "ProcedimentoCriminal.Investigacao.WebApi\ProcedimentoCriminal.Investigacao.WebApi.csproj", "{8AAAD13C-C7C9-43C5-BF15-B7A71AD52710}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +52,10 @@ Global
 		{7C2E8CD2-E795-4594-8F6D-669DE73C7827} = {E7D5D104-2D0D-459A-87B5-B9E6276F5F27}
 		{F64ADD1E-4821-4C8E-A1E6-244419943E21} = {FB4DA2CD-85BF-4E9A-9EFA-B31EB25C2E18}
 		{24888FA3-C769-41C6-A09C-1DB671769630} = {E7D5D104-2D0D-459A-87B5-B9E6276F5F27}
+		{B246AE0B-A342-41C1-955E-C98C04DE4819} = {A4770E08-6FC6-4741-8732-AC5E3488DCC2}
+		{28B7A2A5-AD7C-4AEE-914A-E81245E73ED1} = {3F062A02-050A-42F1-B317-E8FE50BEF683}
+		{ED6A62FE-600F-484D-BE8E-B83DFCFC123F} = {3F062A02-050A-42F1-B317-E8FE50BEF683}
+		{8AAAD13C-C7C9-43C5-BF15-B7A71AD52710} = {3F062A02-050A-42F1-B317-E8FE50BEF683}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BF128237-9B4D-4C4D-93C8-D2C97384F916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -78,5 +90,21 @@ Global
 		{24888FA3-C769-41C6-A09C-1DB671769630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24888FA3-C769-41C6-A09C-1DB671769630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24888FA3-C769-41C6-A09C-1DB671769630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B246AE0B-A342-41C1-955E-C98C04DE4819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B246AE0B-A342-41C1-955E-C98C04DE4819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B246AE0B-A342-41C1-955E-C98C04DE4819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B246AE0B-A342-41C1-955E-C98C04DE4819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B7A2A5-AD7C-4AEE-914A-E81245E73ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B7A2A5-AD7C-4AEE-914A-E81245E73ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B7A2A5-AD7C-4AEE-914A-E81245E73ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B7A2A5-AD7C-4AEE-914A-E81245E73ED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED6A62FE-600F-484D-BE8E-B83DFCFC123F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED6A62FE-600F-484D-BE8E-B83DFCFC123F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED6A62FE-600F-484D-BE8E-B83DFCFC123F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED6A62FE-600F-484D-BE8E-B83DFCFC123F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AAAD13C-C7C9-43C5-BF15-B7A71AD52710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AAAD13C-C7C9-43C5-BF15-B7A71AD52710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AAAD13C-C7C9-43C5-BF15-B7A71AD52710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AAAD13C-C7C9-43C5-BF15-B7A71AD52710}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

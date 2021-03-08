@@ -2,7 +2,7 @@
 {
     public enum Natureza
     {
-        Criminal = 0,
+        Criminal = 1,
         
     }
 }

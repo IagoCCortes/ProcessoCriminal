@@ -12,7 +12,7 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Queries.Filter
     public class FilterOcorrenciasQuery : IRequest<IEnumerable<FilterOcorrenciasVm>>
     {
         public string IdentificadorOcorrencia { get; set; }
-        public Tipo? Tipo { get; set; }
+        public TipoOcorrencia? Tipo { get; set; }
         public Natureza? Natureza { get; set; }
         public string DelegaciaPoliciaApuracao { get; set; }
         public bool? PraticadoPorMenor { get; set; }

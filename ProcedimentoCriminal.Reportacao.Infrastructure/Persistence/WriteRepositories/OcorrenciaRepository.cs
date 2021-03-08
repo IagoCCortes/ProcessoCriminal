@@ -13,7 +13,7 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteReposi
 {
     public class OcorrenciaRepository : BaseRepository, IOcorrenciaRepository
     {
-        public OcorrenciaRepository(DapperConnectionFactory connectionFactory, IDomainEventService domainEventService,
+        public OcorrenciaRepository(IDapperConnectionFactory connectionFactory, IDomainEventService domainEventService,
             ICurrentUserService currentUserService)
             : base(connectionFactory, domainEventService, currentUserService)
         {
@@ -35,7 +35,7 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteReposi
                 new
                 {
                     id = ocorrencia.Id, identificador_ocorrencia = ocorrencia.IdentificadorOcorrencia,
-                    tipo = ocorrencia.Tipo.ToString(),
+                    tipo = ocorrencia.TipoOcorrencia.ToString(),
                     delegacia_policia_apuracao = ocorrencia.DelegaciaPoliciaApuracao,
                     natureza = ocorrencia.Natureza.ToString(),
                     data_hora_fato = ocorrencia.DataHoraFato,
@@ -77,7 +77,12 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteReposi
                     }, transaction: transaction));
             }
 
-            return await ExecuteTransactionAsync(operations);
+            var changes = await ExecuteTransactionAsync(operations);
+            
+            if (ocorrencia is IHasDomainEvent && ocorrencia.DomainEvents.Any())
+                await DispatchEvents(ocorrencia.DomainEvents);
+
+            return changes;
         }
     }
 }

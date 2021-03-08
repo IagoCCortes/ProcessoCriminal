@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence
 {
-    public class DapperConnectionFactory
+    public class DapperConnectionFactory : IDapperConnectionFactory
     {
         private readonly string _connectionString;
 
