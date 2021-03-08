@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ProcedimentoCriminal.Core.Application\ProcedimentoCriminal.Core.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Inqueritos\Commands" />
+    </ItemGroup>
+
+</Project>
