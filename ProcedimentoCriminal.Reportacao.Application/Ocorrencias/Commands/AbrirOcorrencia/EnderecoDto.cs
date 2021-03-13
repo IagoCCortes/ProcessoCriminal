@@ -1,6 +1,9 @@
-﻿namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.AbrirOcorrencia
+﻿using ProcedimentoCriminal.Core.Application.Mappings;
+using ProcedimentoCriminal.Core.Domain;
+
+namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.AbrirOcorrencia
 {
-    public class EnderecoDto
+    public class EnderecoDto : IMapTo<Endereco>
     {
         public int CEP { get; set; }
         public string Endereco { get; set; }

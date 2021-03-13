@@ -12,7 +12,6 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Queries.Filter
     public class FilterOcorrenciasQuery : IRequest<IEnumerable<FilterOcorrenciasVm>>
     {
         public string IdentificadorOcorrencia { get; set; }
-        public TipoOcorrencia? Tipo { get; set; }
         public Natureza? Natureza { get; set; }
         public string DelegaciaPoliciaApuracao { get; set; }
         public bool? PraticadoPorMenor { get; set; }
@@ -32,7 +31,6 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Queries.Filter
 
         public string UnidadeMovelMatriculaResponsavel { get; set; }
         public string UnidadeMovelUnidadeResponsavel { get; set; }
-        public Orgao? UnidadeMovelOrgao { get; set; }
         public string UnidadeMovelPrefixoVtr { get; set; }
         public string UnidadeMovelResponsavel { get; set; }
 

@@ -7,6 +7,7 @@ using Dapper;
 using ProcedimentoCriminal.Reportacao.Application.Interfaces.ReadRepositories;
 using ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Queries.FetchOcorrenciaById;
 using ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Queries.FilterOcorrencias;
+using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Interfaces;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadRepositories
 {
@@ -39,9 +40,6 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadReposit
 
             if (query.Natureza.HasValue)
                 sql.Append(" AND LOWER(natureza) = @Natureza");
-
-            if (query.Tipo.HasValue)
-                sql.Append(" AND LOWER(tipo) = @Tipo");
 
             if (!string.IsNullOrWhiteSpace(query.DelegaciaPoliciaApuracao))
                 sql.Append(" AND LOWER(delegacia_policia_apuracao) LIKE @DelegaciaPoliciaApuracao");
@@ -94,9 +92,6 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadReposit
             if (!string.IsNullOrWhiteSpace(query.UnidadeMovelResponsavel))
                 sql.Append(" AND LOWER(responsavel) LIKE @UnidadeMovelResponsavel");
 
-            if (query.UnidadeMovelOrgao.HasValue)
-                sql.Append(" AND LOWER(orgao) = @UnidadeMovelOrgao");
-
             if (query.PessoaEnvolvidaSexo.HasValue)
                 sql.Append($" AND LOWER(sexo) = LOWER(@PessoaEnvolvidaSexo)");
 
@@ -115,11 +110,7 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadReposit
                 "WHERE id = @Id;" +
                 // pessoas envolvidas
                 "SELECT id, nome, envolvimento, sexo, cpf, profissao, gravidade_lesoes as GravidadeLesoes, raca_cor as RacaCor, " +
-                "id_ocorrencia as IdOcorrencia, created, created_by as CreatedBy FROM pessoas_envolvidas WHERE id_ocorrencia = @Id;" +
-                // unidades moveis
-                "SELECT id, orgao, prefixo_vtr as PrefixoVtr, responsavel, matricula_responsavel as MatriculaResponsavel, " +
-                "unidade_responsavel as UnidadeResponsavel, id_ocorrencia as IdOcorrencia, created, created_by as CreatedBy " +
-                "FROM unidades_moveis WHERE id_ocorrencia = @Id;";
+                "id_ocorrencia as IdOcorrencia, created, created_by as CreatedBy FROM pessoas_envolvidas WHERE id_ocorrencia = @Id;";
 
             using var connection = await _connectionFactory.CreateConnectionAsync();
             using var multi = await connection.QueryMultipleAsync(sql, new {Id = id});
@@ -127,7 +118,6 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadReposit
             if (ocorrencia != null)
             {
                 ocorrencia.PessoasEnvolvidas = multi.Read<FetchOcorrenciaByIdPessoaEnvolvida>().ToList();
-                ocorrencia.UnidadesMoveis = multi.Read<FetchOcorrenciaByIdUnidadeMovel>().ToList();
             }
 
             return ocorrencia;

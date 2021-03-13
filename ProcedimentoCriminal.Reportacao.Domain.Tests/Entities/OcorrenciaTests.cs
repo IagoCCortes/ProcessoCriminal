@@ -18,8 +18,8 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Tests.Entities
                 DateTime.Now,
                 new Endereco(123, string.Empty, string.Empty, String.Empty, String.Empty, String.Empty, String.Empty),
                 false, false, String.Empty, String.Empty, new List<PessoaEnvolvida>(),
-                new List<UnidadeMovel>
-                    {new UnidadeMovel(Orgao.PM, String.Empty, String.Empty, String.Empty, String.Empty)});
+                new List<VeiculoEnvolvido>
+                    {new VeiculoEnvolvido(Orgao.PM, String.Empty, String.Empty, String.Empty, String.Empty)});
         }
 
         // [Fact]

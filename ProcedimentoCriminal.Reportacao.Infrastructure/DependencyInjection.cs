@@ -5,6 +5,7 @@ using ProcedimentoCriminal.Core.Domain;
 using ProcedimentoCriminal.Reportacao.Application.Interfaces.ReadRepositories;
 using ProcedimentoCriminal.Reportacao.Domain.Interfaces;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence;
+using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Interfaces;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.ReadRepositories;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteRepositories;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Services;

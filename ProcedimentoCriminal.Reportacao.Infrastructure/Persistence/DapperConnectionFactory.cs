@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Interfaces;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence
 {

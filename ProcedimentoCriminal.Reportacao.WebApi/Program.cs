@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence;
+using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Interfaces;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Seed;
 
 namespace ProcedimentoCriminal.Reportacao.WebApi

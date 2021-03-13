@@ -4,6 +4,7 @@ using System.Data;
 using System.Threading.Tasks;
 using ProcedimentoCriminal.Core.Application.Interfaces;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Interfaces;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteRepositories
 {
