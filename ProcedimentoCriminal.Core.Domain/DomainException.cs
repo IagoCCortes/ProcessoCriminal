@@ -1,16 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ProcedimentoCriminal.Core.Domain
 {
     public class DomainException : Exception
     {
+        public IDictionary<string, string[]> Errors { get; }
+        
         public DomainException()
-        { }
+            : base("One or more Domain invariants were violated")
+        {
+            Errors = new Dictionary<string, string[]>();
+        }
 
-        public DomainException(string message) : base(message)
-        { }
-
-        public DomainException(string message, Exception innerException) : base(message, innerException)
-        { }
+        public DomainException(IDictionary<string, string[]> errors) : this()
+        {
+            Errors = errors;
+        }
     }
 }

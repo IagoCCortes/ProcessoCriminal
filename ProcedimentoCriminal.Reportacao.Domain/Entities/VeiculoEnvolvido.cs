@@ -9,7 +9,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
     {
         public string Marca { get; private set; }
         public string Modelo { get; private set; }
-        public TipoVeiculo? Tipo { get; private set; }
+        public TipoVeiculo Tipo { get; private set; }
         public string Cor { get; private set; }
         public CategoriaVeiculo? Categoria { get; private set; }
         public int? AnoFabricacao { get; private set; }

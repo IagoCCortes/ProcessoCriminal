@@ -21,7 +21,7 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteReposi
             CurrentUserService = currentUserService;
         }
 
-        protected async Task<int> ExecuteTransactionAsync(List<Func<IDbConnection, IDbTransaction, Task<int>>> operations)
+        protected async Task<int> SaveChangesAsync(List<Func<IDbConnection, IDbTransaction, Task<int>>> operations)
         {
             using var connection = await ConnectionFactory.CreateConnectionAsync();
             using var transaction = connection.BeginTransaction();

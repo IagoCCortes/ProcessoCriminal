@@ -38,6 +38,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             Natureza = natureza;
             DataHoraComunicacao = DateTime.UtcNow;
             _pessoasEnvolvidas = new List<PessoaEnvolvida>();
+            _meiosEmpregados = new List<MeioEmpregado>();
             DomainEvents = new List<DomainEvent>();
         }
 
@@ -71,6 +72,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             public OcorrenciaBuilder DefinirCamposComuns(DelegaciaPolicia delegaciaPoliciaApuracao, Periodo periodoFato,
                 Endereco localFato)
             {
+                _ocorrencia.IdentificadorOcorrencia = new IdentificadorOcorrencia(delegaciaPoliciaApuracao.Numero);
                 _ocorrencia.DelegaciaPoliciaApuracao = delegaciaPoliciaApuracao;
                 _ocorrencia.PeriodoFato = periodoFato;
                 _ocorrencia.LocalFato = localFato;
@@ -99,7 +101,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             public Ocorrencia Build()
             {
                 var buildErrors = _validador.ValidateTemplateMethod();
-                if (buildErrors.Any()) throw new DomainException();
+                if (buildErrors.Any()) throw new DomainException(buildErrors);
 
                 _ocorrencia.DomainEvents.Add(new OcorrenciaCriadaEvent("Test"));
                 return _ocorrencia;

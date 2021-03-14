@@ -12,13 +12,15 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities.OcorrenciaBuilderValid
         protected override void ValidarMeiosEmpregados()
         {
             if (Ocorrencia.MeiosEmpregados.Any())
-                Errors.Add(MensagemNaoAdmite(Ocorrencia.Natureza.GetEnumDescription(), "Meios Empregados"));
+                Errors.Add(nameof(Ocorrencia.MeiosEmpregados),
+                    new[] {MensagemNaoAdmite(Ocorrencia.Natureza.GetEnumDescription(), "Meios Empregados")});
         }
 
         protected override void ValidarDescricaoFato()
         {
             if (Ocorrencia.DescricaoFato != null)
-                Errors.Add(MensagemNaoAdmite(Ocorrencia.Natureza.GetEnumDescription(), "Descrição dos fatos"));
+                Errors.Add(nameof(Ocorrencia.DescricaoFato),
+                    new[] {MensagemNaoAdmite(Ocorrencia.Natureza.GetEnumDescription(), "Descrição dos fatos")});
         }
 
         protected override void ValidarPessoasEnvolvidas()
@@ -28,9 +30,12 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities.OcorrenciaBuilderValid
                 !Ocorrencia.PessoasEnvolvidas.Any(p =>
                     p.Envolvimento.IsOneOf(Envolvimento.Vitima, Envolvimento.ComunicanteVitima) &&
                     p.ObjetosEnvolvidos.Any()))
-                Errors.Add(
-                    $"Uma ocorrência de {Ocorrencia.Natureza.GetEnumDescription()} deve " +
-                    "conter ao menos um Comunicante/Vítima com um Objeto Envolvido ou um Comunicante e uma Vítima com um Objeto Envolvido");
+                Errors.Add(nameof(Ocorrencia.PessoasEnvolvidas),
+                    new[]
+                    {
+                        $"Uma ocorrência de {Ocorrencia.Natureza.GetEnumDescription()} deve " +
+                        "conter ao menos um Comunicante/Vítima com um Objeto Envolvido ou um Comunicante e uma Vítima com um Objeto Envolvido"
+                    });
         }
     }
 }

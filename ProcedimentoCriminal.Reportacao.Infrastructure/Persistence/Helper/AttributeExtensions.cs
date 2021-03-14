@@ -7,7 +7,7 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Helper
     {
         public static string GetTableName<T>(this T dbEntity) where T : DatabaseEntity
         {
-            var attribute = typeof(T).GetCustomAttribute(typeof(TableNameAttribute), false) as TableNameAttribute;
+            var attribute = dbEntity.GetType().GetCustomAttribute(typeof(TableNameAttribute), false) as TableNameAttribute;
             return attribute.TableName;
         }
     }

@@ -23,6 +23,6 @@ namespace ProcedimentoCriminal.Reportacao.Domain.ValueObjects
             yield return NmrDelegacia;
         }
 
-        public override string ToString() => $"{NmrOcorrencia}/{Ano}-{NmrDelegacia}";
+        public override string ToString() => $"/{Ano}-{NmrDelegacia}";
     }
 }

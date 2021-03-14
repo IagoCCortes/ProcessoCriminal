@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using ProcedimentoCriminal.Core.Application.Exceptions;
+using ProcedimentoCriminal.Core.Domain;
 
 namespace ProcedimentoCriminal.Reportacao.WebApi.Filters
 {
@@ -17,6 +18,7 @@ namespace ProcedimentoCriminal.Reportacao.WebApi.Filters
             // Register known exception types and handlers.
             _exceptionHandlers = new Dictionary<Type, Action<ExceptionContext>>
             {
+                { typeof(DomainException), HandleDomainInvariantException },
                 { typeof(ValidationException), HandleValidationException },
                 { typeof(NotFoundException), HandleNotFoundException },
             };
@@ -47,6 +49,21 @@ namespace ProcedimentoCriminal.Reportacao.WebApi.Filters
             HandleUnknownException(context);
         }
 
+        private void HandleDomainInvariantException(ExceptionContext context)
+        {
+            var exception = context.Exception as DomainException;
+
+            var details = new ValidationProblemDetails(exception.Errors)
+            {
+                Title = exception.Message,
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+            };
+
+            context.Result = new BadRequestObjectResult(details);
+
+            context.ExceptionHandled = true;
+        }
+        
         private void HandleValidationException(ExceptionContext context)
         {
             var exception = context.Exception as ValidationException;

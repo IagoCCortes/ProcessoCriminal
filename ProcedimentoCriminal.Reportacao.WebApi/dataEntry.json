@@ -1,40 +1,54 @@
 ﻿{
-  "identificadorOcorrencia": "1234/2021-1",
-  "tipo": 0,
-  "delegaciaPoliciaApuracao": "13a DP",
-  "natureza": 0,
-  "dataHoraFato": "2021-02-28T13:06:34.143Z",
-  "enderecoFato": {
-    "cep": 72001670,
-    "enderecoDescricao": "SHVP ch114-E",
-    "numeroResidencia": "1",
-    "complemento": "",
-    "bairro": "Taguatinga Norte",
-    "cidade": "Taguatinga",
-    "estado": "DF"
+  "delegaciaPoliciaApuracaoNumero": 12,
+  "delegaciaPoliciaApuracaoUf": 4,
+  "natureza": 1,
+  "InicioFato": "2021-03-15T13:49:34.678Z",
+  "fimFato": "2021-03-16T13:49:34.678Z",
+  "localFato": {
+    "cep": 213654789,
+    "endereco": "a",
+    "numeroResidencia": "b",
+    "complemento": "v",
+    "bairro": "d",
+    "cidade": "e",
+    "estado": "f"
   },
-  "praticadoPorMenor": true,
-  "localPericiado": true,
-  "tipoLocal": "Escola",
-  "objetoMeioEmpregado": "Arma de fogo",
+  "descricaoFato": "Bad stuff man",
+  "meiosEmpregados": [
+    1,4
+  ],
   "pessoasEnvolvidas": [
     {
-      "nome": "Sophie Emerich",
-      "envolvimento": "Vítima",
-      "sexo": "F",
-      "cpf": "04951147565",
-      "profissao": "Autora",
-      "gravidadeLesoes": "leves",
-      "racaCor": "Branca"
-    }
-  ],
-  "unidadesMoveis": [
-    {
-      "orgao": 0,
-      "prefixoVTR": "OVN",
-      "responsavel": "Muriel Laplace",
-      "matriculaResponsavel": "1452PL",
-      "unidadeResponsavel": "145U8"
+      "envolvimento": 1,
+      "nome": "Marvina",
+      "identidadeRg": 4567895,
+      "identidadeOrgaoEmissor": "SSP",
+      "identidadeUf": 3,
+      "nomeMae": "Marvinaaaa",
+      "nomePai": "Marvino",
+      "nascimentoData": "2001-03-13T13:49:34.678Z",
+      "nascimentoUf": 2,
+      "cpf": "58264598412",
+      "sexo": "M",
+      "passaporte": "18664485",
+      "estadoCivil": 4,
+      "grauInstrucao": 3,
+      "nomeSocial": "M",
+      "enderecoResidencial": {
+        "cep": 54698753,
+        "endereco": "string",
+        "numeroResidencia": "string",
+        "complemento": "string",
+        "bairro": "string",
+        "cidade": "string",
+        "estado": "string"
+      },
+      "objetosEnvolvidos": [
+        {
+          "tipoObjeto": 4,
+          "descricao": "Grande"
+        }
+      ]
     }
   ]
 }

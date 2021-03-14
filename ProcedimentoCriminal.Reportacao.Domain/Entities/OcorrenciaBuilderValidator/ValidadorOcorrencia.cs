@@ -7,31 +7,33 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities.OcorrenciaBuilderValid
     internal abstract class ValidadorOcorrencia
     {
         protected readonly Ocorrencia Ocorrencia;
-        protected List<string> Errors;
+        protected Dictionary<string, string[]> Errors;
 
         public ValidadorOcorrencia(Ocorrencia ocorrencia)
         {
             Ocorrencia = ocorrencia;
-            Errors = new List<string>();
+            Errors = new();
         }
 
-        public IEnumerable<string> ValidateTemplateMethod()
+        public Dictionary<string, string[]> ValidateTemplateMethod()
         {
             if (Ocorrencia.DelegaciaPoliciaApuracao == null)
-                Errors.Add("O campo Delegacia de Polícia Apuração não pode ser vazio");
+                Errors.Add(nameof(Ocorrencia.DelegaciaPoliciaApuracao),
+                    new[] {"O campo Delegacia de Polícia Apuração não pode ser vazio"});
 
             if (Ocorrencia.PeriodoFato == null)
-                Errors.Add("O Período do fato não pode ser vazio");
+                Errors.Add(nameof(Ocorrencia.PeriodoFato), new[] {"O Período do fato não pode ser vazio"});
 
             if (Ocorrencia.LocalFato == null)
-                Errors.Add("O Local do fato não pode ser vazio");
+                Errors.Add(nameof(Ocorrencia.LocalFato), new[] {"O Local do fato não pode ser vazio"});
 
             ValidarMeiosEmpregados();
-            
+
             ValidarDescricaoFato();
 
             if (!Ocorrencia.PessoasEnvolvidas.Any())
-                Errors.Add("A ocorrência deve conter pessoa(s) envolvida(s)");
+                Errors.Add(nameof(Ocorrencia.PessoasEnvolvidas),
+                    new[] {"A ocorrência deve conter pessoa(s) envolvida(s)"});
             else
                 ValidarPessoasEnvolvidas();
 
@@ -42,22 +44,6 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities.OcorrenciaBuilderValid
         protected abstract void ValidarDescricaoFato();
         protected abstract void ValidarPessoasEnvolvidas();
 
-        private void ValidarDescricaoFato(List<string> buildErrors)
-        {
-            if (Ocorrencia.Natureza.IsOneOf(Natureza.ExtravioPerda, Natureza.AcidenteTransitoSemVitimas))
-            {
-                if (Ocorrencia.DescricaoFato != null)
-                    buildErrors.Add(
-                        $"A Natureza de ocorrência {Ocorrencia.Natureza.GetEnumDescription()} não adimite Descricao dos fatos");
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(Ocorrencia.DescricaoFato))
-                    buildErrors.Add(
-                        $"A Natureza de ocorrência {Ocorrencia.Natureza.GetEnumDescription()} exige Descricao dos fatos");
-            }
-        }
-        
         protected static bool PossuiComunicanteVitima(IEnumerable<PessoaEnvolvida> pessoasEnvolvidas) =>
             pessoasEnvolvidas.Any(p => p.Envolvimento == Envolvimento.ComunicanteVitima);
 
@@ -70,7 +56,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities.OcorrenciaBuilderValid
 
         protected static string MensagemNaoAdmite(string natureza, string campo) =>
             $"A Natureza de ocorrência {natureza} não admite {campo}";
-        
+
         protected static string MensagemExige(string natureza, string campo) =>
             $"A Natureza de ocorrência {natureza} exige {campo}";
     }

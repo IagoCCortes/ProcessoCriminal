@@ -2,7 +2,7 @@
 {
     public enum Uf
     {
-        AC,
+        AC = 1,
         AL,
         AP,
         AM,

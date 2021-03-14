@@ -55,7 +55,7 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteReposi
                 }
             }
 
-            var changes = await ExecuteTransactionAsync(operations);
+            var changes = await SaveChangesAsync(operations);
 
             if (ocorrencia is IHasDomainEvent && ocorrencia.DomainEvents.Any())
                 await DispatchEvents(ocorrencia.DomainEvents);

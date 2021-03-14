@@ -1,4 +1,5 @@
-﻿using ProcedimentoCriminal.Core.Application.Mappings;
+﻿using AutoMapper;
+using ProcedimentoCriminal.Core.Application.Mappings;
 using ProcedimentoCriminal.Core.Domain;
 
 namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.AbrirOcorrencia
