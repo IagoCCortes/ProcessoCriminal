@@ -12,8 +12,8 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos
         public int? identidade_rg { get; private set; }
         public string identidade_orgao_emissor { get; private set; }
         public int? id_identidade_uf { get; private set; }
-        public string NomeMae { get; private set; }
-        public string NomePai { get; private set; }
+        public string nome_mae { get; private set; }
+        public string nome_pai { get; private set; }
         public DateTime? nascimento_data { get; private set; }
         public int? id_nascimento_uf { get; private set; }
         public string cpf { get; private set; }
@@ -33,8 +33,8 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos
             identidade_rg = entity.Identidade?.Rg;
             identidade_orgao_emissor = entity.Identidade?.OrgaoEmissor;
             id_identidade_uf = (int?) entity.Identidade?.Uf;
-            NomeMae = entity.NomeMae;
-            NomePai = entity.NomePai;
+            nome_mae = entity.NomeMae;
+            nome_pai = entity.NomePai;
             nascimento_data = entity.Nascimento?.Data;
             id_nascimento_uf = (int?) entity.Nascimento?.Uf;
             cpf = entity.Cpf;

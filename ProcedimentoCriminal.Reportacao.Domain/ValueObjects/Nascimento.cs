@@ -7,8 +7,8 @@ namespace ProcedimentoCriminal.Reportacao.Domain.ValueObjects
 {
     public class Nascimento : ValueObject
     {
-        public DateTime Data { get; private set; }
-        public Uf Uf { get; private set; }
+        public DateTime Data { get; }
+        public Uf Uf { get; }
 
         public Nascimento(DateTime data, Uf uf)
         {

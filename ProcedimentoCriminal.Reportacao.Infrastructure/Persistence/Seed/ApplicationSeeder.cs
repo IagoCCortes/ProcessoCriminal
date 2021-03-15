@@ -201,16 +201,15 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Seed
 
         private async Task CreateTriggers(IDbConnection connection, IDbTransaction transaction)
         {
-            await connection.ExecuteAsync("CREATE TRIGGER update_identificador_ocorrencia " +
-                                          "AFTER INSERT " +
-                                          "ON ocorrencias FOR EACH ROW " +
-                                          "BEGIN " +
-                                          "UPDATE ocorrencias SET identificador_ocorrencia = " +
-                                          "CONCAT((SELECT COUNT(*) FROM ocorrencias WHERE " +
-                                          "delegacia_policia_apuracao = NEW.delegacia_policia_apuracao) + 1, " +
-                                          "NEW.identificador_ocorrencia) " +
-                                          "WHERE id = NEW.id; " +
-                                          "END;  ", transaction: transaction);
+            await connection.ExecuteAsync(
+                "CREATE TRIGGER update_identificador_ocorrencia " +
+                "BEFORE INSERT " +
+                "ON ocorrencias FOR EACH ROW BEGIN " +
+                "SET NEW.identificador_ocorrencia = " +
+                "CONCAT((SELECT count FROM (SELECT COUNT(*) AS count FROM ocorrencias WHERE " +
+                "delegacia_policia_apuracao = NEW.delegacia_policia_apuracao) as counter) + 1, " +
+                "NEW.identificador_ocorrencia); " +
+                "END;  ", transaction: transaction);
         }
     }
 }

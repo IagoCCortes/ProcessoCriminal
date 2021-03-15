@@ -22,7 +22,8 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure
             services.AddScoped<IOcorrenciaRepository>(provider => new OcorrenciaRepository(
                 provider.GetRequiredService<IDapperConnectionFactory>(),
                 provider.GetRequiredService<IDomainEventService>(),
-                provider.GetRequiredService<ICurrentUserService>()));
+                provider.GetRequiredService<ICurrentUserService>(),
+                provider.GetRequiredService<IDateTime>()));
             services.AddScoped<IOcorrenciaReadRepository>(provider =>
                 new OcorrenciaReadRepository(provider.GetRequiredService<IDapperConnectionFactory>()));
             services.AddScoped<IDomainEventService, DomainEventService>();

@@ -6,13 +6,13 @@ namespace ProcedimentoCriminal.Reportacao.Domain.ValueObjects
 {
     public class IdentificadorOcorrencia : ValueObject
     {
-        public int NmrOcorrencia { get; private set; }
-        public int Ano { get; private set; }
-        public int NmrDelegacia { get; private set; }
+        public int NmrOcorrencia { get; }
+        public int Ano { get; }
+        public int NmrDelegacia { get; }
 
-        public IdentificadorOcorrencia(int nmrDelegacia)
+        public IdentificadorOcorrencia(int nmrDelegacia, int ano)
         {
-            Ano = DateTime.UtcNow.Year;
+            Ano = ano;
             NmrDelegacia = nmrDelegacia;
         }
         

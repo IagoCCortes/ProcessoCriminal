@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ProcedimentoCriminal.Core.Domain;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos
@@ -10,14 +11,14 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos
         public string created_by { get; set; }
         public DateTime? last_modified { get; set; }
         public string last_modified_by { get; set; }
+        public List<DomainEvent> DomainEvents { get; set; }
 
         protected DatabaseEntity(Entity entity)
         {
             id = entity.Id;
-            created = entity.Created;
-            created_by = entity.CreatedBy;
-            last_modified = entity.LastModified;
-            last_modified_by = entity.LastModifiedBy;
+            DomainEvents = new List<DomainEvent>();
+            if (entity is IHasDomainEvent @hasDomainEvents)
+                DomainEvents.AddRange(@hasDomainEvents.DomainEvents);
         }
     }
 }

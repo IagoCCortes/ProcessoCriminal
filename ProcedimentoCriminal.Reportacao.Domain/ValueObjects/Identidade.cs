@@ -6,9 +6,9 @@ namespace ProcedimentoCriminal.Reportacao.Domain.ValueObjects
 {
     public class Identidade : ValueObject
     {
-        public int Rg { get; private set; }
-        public string OrgaoEmissor { get; private set; }
-        public Uf Uf { get; private set; }
+        public int Rg { get; }
+        public string OrgaoEmissor { get; }
+        public Uf Uf { get; }
 
         public Identidade(int rg, string orgaoEmissor, Uf uf)
         {

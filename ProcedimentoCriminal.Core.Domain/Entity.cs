@@ -5,26 +5,10 @@ namespace ProcedimentoCriminal.Core.Domain
     public abstract class Entity
     {
         public Guid Id { get; private set; }
-        public DateTime Created { get; private set; }
-        public string CreatedBy { get; private set; }
-        public DateTime? LastModified { get; private set; }
-        public string LastModifiedBy { get; private set; }
 
         protected Entity()
         {
             Id = Guid.NewGuid();
-            Created = DateTime.Now;
-        }
-
-        public void SetCreatedBy(string creator)
-        {
-            CreatedBy = creator;
-        }
-
-        public void Update(string updatedBy)
-        {
-            LastModified = DateTime.Now;
-            LastModifiedBy = updatedBy;
         }
         
         public override bool Equals(object obj)

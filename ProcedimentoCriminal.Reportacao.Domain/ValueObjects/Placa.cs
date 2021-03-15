@@ -5,8 +5,8 @@ namespace ProcedimentoCriminal.Reportacao.Domain.ValueObjects
 {
     public class Placa : ValueObject
     {
-        public string Letras { get; private set; }
-        public string Numero { get; private set; }
+        public string Letras { get; }
+        public string Numero { get; }
 
         public Placa(string letras, int numero)
         {

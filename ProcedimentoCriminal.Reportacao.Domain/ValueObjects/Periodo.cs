@@ -6,8 +6,8 @@ namespace ProcedimentoCriminal.Reportacao.Domain.ValueObjects
 {
     public class Periodo : ValueObject
     {
-        public DateTime Inicio { get; private set; }
-        public DateTime Fim { get; private set; }
+        public DateTime Inicio { get; }
+        public DateTime Fim { get; }
 
         public Periodo(DateTime inicio, DateTime fim)
         {

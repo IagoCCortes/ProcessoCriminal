@@ -33,10 +33,10 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             get => _pessoasEnvolvidas.AsReadOnly();
         }
 
-        private Ocorrencia(Natureza natureza)
+        private Ocorrencia(Natureza natureza, DateTime time)
         {
             Natureza = natureza;
-            DataHoraComunicacao = DateTime.UtcNow;
+            DataHoraComunicacao = time;
             _pessoasEnvolvidas = new List<PessoaEnvolvida>();
             _meiosEmpregados = new List<MeioEmpregado>();
             DomainEvents = new List<DomainEvent>();
@@ -49,11 +49,11 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             private Ocorrencia _ocorrencia;
             private ValidadorOcorrencia _validador;
 
-            public OcorrenciaBuilder(Natureza natureza) => Reset(natureza);
+            public OcorrenciaBuilder(Natureza natureza, DateTime time) => Reset(natureza, time);
 
-            public OcorrenciaBuilder Reset(Natureza natureza)
+            public OcorrenciaBuilder Reset(Natureza natureza, DateTime time)
             {
-                _ocorrencia = new Ocorrencia(natureza);
+                _ocorrencia = new Ocorrencia(natureza, time);
                 _validador = natureza switch
                 {
                     Natureza.Ameaca => new ValidadorAmeaca(_ocorrencia),
@@ -70,9 +70,9 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
             }
 
             public OcorrenciaBuilder DefinirCamposComuns(DelegaciaPolicia delegaciaPoliciaApuracao, Periodo periodoFato,
-                Endereco localFato)
+                Endereco localFato, int ano)
             {
-                _ocorrencia.IdentificadorOcorrencia = new IdentificadorOcorrencia(delegaciaPoliciaApuracao.Numero);
+                _ocorrencia.IdentificadorOcorrencia = new IdentificadorOcorrencia(delegaciaPoliciaApuracao.Numero, ano);
                 _ocorrencia.DelegaciaPoliciaApuracao = delegaciaPoliciaApuracao;
                 _ocorrencia.PeriodoFato = periodoFato;
                 _ocorrencia.LocalFato = localFato;

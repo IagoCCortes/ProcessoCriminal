@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using ProcedimentoCriminal.Core.Application.Interfaces;
 using ProcedimentoCriminal.Core.Domain;
 using ProcedimentoCriminal.Reportacao.Domain.Entities;
 using ProcedimentoCriminal.Reportacao.Domain.Enums;
@@ -29,22 +30,24 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.Abrir
     {
         private readonly IOcorrenciaRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IDateTime _dateTime;
 
-        public RegistrarOcorrenciaCommandHandler(IOcorrenciaRepository repository, IMapper mapper)
+        public RegistrarOcorrenciaCommandHandler(IOcorrenciaRepository repository, IMapper mapper, IDateTime dateTime)
         {
             _repository = repository;
             _mapper = mapper;
+            _dateTime = dateTime;
         }
 
         public async Task<Unit> Handle(RegistrarOcorrenciaCommand request, CancellationToken cancellationToken)
         {
             var localFato = _mapper.Map<Endereco>(request.LocalFato);
 
-            var ocorrenciaBuilder = new Ocorrencia.OcorrenciaBuilder((Natureza) request.Natureza)
+            var ocorrenciaBuilder = new Ocorrencia.OcorrenciaBuilder((Natureza) request.Natureza, _dateTime.UtcNow)
                 .DefinirCamposComuns(
                     new DelegaciaPolicia(request.DelegaciaPoliciaApuracaoNumero,
                         (Uf) request.DelegaciaPoliciaApuracaoUf), new Periodo(request.InicioFato, request.FimFato),
-                    localFato);
+                    localFato, _dateTime.UtcNow.Year);
 
             if (!string.IsNullOrWhiteSpace(request.DescricaoFato))
                 ocorrenciaBuilder.DefinirDescricaoDosFatos(request.DescricaoFato);
