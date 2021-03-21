@@ -80,7 +80,8 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.Abrir
             foreach (var meio in request.MeiosEmpregados)
                 ocorrenciaBuilder.VincularMeioEmpregado((MeioEmpregado) meio);
 
-            await _repository.InsertOcorrenciaAsync(ocorrenciaBuilder.Build());
+            _repository.Insert(ocorrenciaBuilder.Build());
+            await _repository.SaveChangesAsync();
             return Unit.Value;
         }
     }

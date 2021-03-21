@@ -16,8 +16,12 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos
         public DateTime data_hora_comunicacao { get; private set; }
         public string local_fato { get; private set; }
         public string descricao_fato { get; private set; }
-        
-        public OcorrenciaDao(Ocorrencia ocorrencia) : base (ocorrencia)
+
+        public OcorrenciaDao(Guid id) : base(id)
+        {
+        }
+
+        public OcorrenciaDao(Ocorrencia ocorrencia) : base(ocorrencia)
         {
             identificador_ocorrencia = ocorrencia.IdentificadorOcorrencia.ToString();
             delegacia_policia_apuracao = ocorrencia.DelegaciaPoliciaApuracao.ToString();

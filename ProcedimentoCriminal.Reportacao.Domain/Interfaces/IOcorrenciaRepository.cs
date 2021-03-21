@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ProcedimentoCriminal.Reportacao.Domain.Entities;
 
 namespace ProcedimentoCriminal.Reportacao.Domain.Interfaces
 {
-    public interface IOcorrenciaRepository
+    public interface IOcorrenciaRepository : IGenericWriteRepository<Ocorrencia>
     {
-        Task<int> InsertOcorrenciaAsync(Ocorrencia ocorrencia);
+        new void Insert(Ocorrencia ocorrencia);
     }
 }

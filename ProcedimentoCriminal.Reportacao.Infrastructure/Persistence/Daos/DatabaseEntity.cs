@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ProcedimentoCriminal.Core.Domain;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos
@@ -11,14 +12,21 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos
         public string created_by { get; set; }
         public DateTime? last_modified { get; set; }
         public string last_modified_by { get; set; }
-        public List<DomainEvent> DomainEvents { get; set; }
+        private List<DomainEvent> _domainEvents;
 
-        protected DatabaseEntity(Entity entity)
+        protected DatabaseEntity(Guid id)
         {
-            id = entity.Id;
-            DomainEvents = new List<DomainEvent>();
-            if (entity is IHasDomainEvent @hasDomainEvents)
-                DomainEvents.AddRange(@hasDomainEvents.DomainEvents);
+            this.id = id;
+            _domainEvents = new List<DomainEvent>();
         }
+
+        protected DatabaseEntity(Entity entity) : this(entity.Id)
+        {
+            if (entity is IHasDomainEvent hasDomainEvents)
+                _domainEvents.AddRange(hasDomainEvents.DomainEvents);
+        }
+
+        public bool HasDomainEvents() => _domainEvents.Any();
+        public List<DomainEvent> DomainEvents() => _domainEvents;
     }
 }

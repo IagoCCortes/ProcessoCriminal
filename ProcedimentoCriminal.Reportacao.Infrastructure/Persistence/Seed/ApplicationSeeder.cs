@@ -123,7 +123,8 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Seed
                 "PRIMARY KEY(`id`)," +
                 "KEY `ocorrencias_fk_idx` (`id_ocorrencia`)," +
                 "CONSTRAINT `ocorrencias_fk` FOREIGN KEY(`" +
-                "id_ocorrencia`) REFERENCES `ocorrencias` (`id`)," +
+                "id_ocorrencia`) REFERENCES `ocorrencias` (`id`) " +
+                "ON DELETE CASCADE," +
                 "KEY `envolvimentos_fk_idx` (`id_envolvimento`)," +
                 "CONSTRAINT `envolvimentos_fk` FOREIGN KEY(`" +
                 "id_envolvimento`) REFERENCES `envolvimentos` (`id`)," +
@@ -165,7 +166,8 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Seed
                 "PRIMARY KEY(`id`)," +
                 "KEY `pessoas_envolvidas_fk_idx` (`id_pessoa_envolvida`)," +
                 "CONSTRAINT `pessoas_envolvidas_veiculos_envolvidos_fk` FOREIGN KEY(`" +
-                "id_pessoa_envolvida`) REFERENCES `pessoas_envolvidas` (`id`)," +
+                "id_pessoa_envolvida`) REFERENCES `pessoas_envolvidas` (`id`) " +
+                "ON DELETE CASCADE," +
                 "KEY `ufs_fk_idx` (`id_uf`)," +
                 "CONSTRAINT `ufs_fk` FOREIGN KEY(`" +
                 "id_uf`) REFERENCES `ufs` (`id`)," +
@@ -191,7 +193,8 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Seed
                 "PRIMARY KEY(`id`)," +
                 "KEY `pessoas_envolvidas_fk_idx` (`id_pessoa_envolvida`)," +
                 "CONSTRAINT `pessoas_envolvidas_objetos_envolvidos_fk` FOREIGN KEY(`" +
-                "id_pessoa_envolvida`) REFERENCES `pessoas_envolvidas` (`id`)," +
+                "id_pessoa_envolvida`) REFERENCES `pessoas_envolvidas` (`id`) " +
+                "ON DELETE CASCADE," +
                 "KEY `tipos_objeto_fk_idx` (`id_tipo`)," +
                 "CONSTRAINT `tipos_objeto_fk` FOREIGN KEY(`" +
                 "id_tipo`) REFERENCES `tipos_objeto` (`id`)" +
