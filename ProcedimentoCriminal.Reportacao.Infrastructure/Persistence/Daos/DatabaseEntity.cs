@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Core.Domain.Interfaces;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos
 {

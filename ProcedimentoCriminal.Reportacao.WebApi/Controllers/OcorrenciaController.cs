@@ -21,82 +21,46 @@ namespace ProcedimentoCriminal.Reportacao.WebApi.Controllers
     public class OcorrenciaController : ApiControllerBase
     {
         [HttpPost("ocorrencia/filtro")]
-        public async Task<ActionResult> FilterOcorrencias(FilterOcorrenciasQuery query)
-        {
-            return Ok(await Mediator.Send(query));
-        }
+        public async Task<ActionResult> FilterOcorrencias(FilterOcorrenciasQuery query) => Ok(await Mediator.Send(query));
 
         [HttpGet("ocorrencia/{id}")]
-        public async Task<ActionResult> FetchOcorrenciaById(Guid id)
-        {
-            return Ok(await Mediator.Send(new FetchOcorrenciaByIdQuery {Id = id}));
-        }
+        public async Task<ActionResult> FetchOcorrenciaById(Guid id) => Ok(await Mediator.Send(new FetchOcorrenciaByIdQuery {Id = id}));
 
         [HttpGet("categoriasveiculo")]
-        public async Task<ActionResult> FetchCategoriasVeiculo()
-        {
-            return Ok(await Mediator.Send(new FetchCategoriasVeiculoQuery()));
-        }
+        public async Task<ActionResult> FetchCategoriasVeiculo() => Ok(await Mediator.Send(new FetchCategoriasVeiculoQuery()));
 
         [HttpGet("envolvimentos")]
-        public async Task<ActionResult> FetchEnvolvimentos()
-        {
-            return Ok(await Mediator.Send(new FetchEnvolvimentosQuery()));
-        }
+        public async Task<ActionResult> FetchEnvolvimentos() => Ok(await Mediator.Send(new FetchEnvolvimentosQuery()));
 
         [HttpGet("estadoscivis")]
-        public async Task<ActionResult> FetchEstadosCivis()
-        {
-            return Ok(await Mediator.Send(new FetchEstadosCivisQuery()));
-        }
+        public async Task<ActionResult> FetchEstadosCivis() => Ok(await Mediator.Send(new FetchEstadosCivisQuery()));
 
         [HttpGet("grausinstrucao")]
-        public async Task<ActionResult> FetchGrausIntrucao()
-        {
-            return Ok(await Mediator.Send(new FetchGrausInstrucaoQuery()));
-        }
+        public async Task<ActionResult> FetchGrausIntrucao() => Ok(await Mediator.Send(new FetchGrausInstrucaoQuery()));
 
         [HttpGet("meiosempregados")]
-        public async Task<ActionResult> FetchMeiosEmpregados()
-        {
-            return Ok(await Mediator.Send(new FetchMeiosEmpregadosQuery()));
-        }
+        public async Task<ActionResult> FetchMeiosEmpregados() => Ok(await Mediator.Send(new FetchMeiosEmpregadosQuery()));
 
         [HttpGet("naturezas")]
-        public async Task<ActionResult> FetchNaturezas()
-        {
-            return Ok(await Mediator.Send(new FetchNaturezasQuery()));
-        }
+        public async Task<ActionResult> FetchNaturezas() => Ok(await Mediator.Send(new FetchNaturezasQuery()));
 
         [HttpGet("naturezasacidente")]
-        public async Task<ActionResult> FetchNaturezasAcidente()
-        {
-            return Ok(await Mediator.Send(new FetchNaturezasAcidenteQuery()));
-        }
+        public async Task<ActionResult> FetchNaturezasAcidente() => Ok(await Mediator.Send(new FetchNaturezasAcidenteQuery()));
 
         [HttpGet("tiposobjeto")]
-        public async Task<ActionResult> FetchTiposObjeto()
-        {
-            return Ok(await Mediator.Send(new FetchTiposObjetoQuery()));
-        }
+        public async Task<ActionResult> FetchTiposObjeto() => Ok(await Mediator.Send(new FetchTiposObjetoQuery()));
 
         [HttpGet("tiposveiculo")]
-        public async Task<ActionResult> FetchTiposVeiculo()
-        {
-            return Ok(await Mediator.Send(new FetchTiposVeiculoQuery()));
-        }
+        public async Task<ActionResult> FetchTiposVeiculo() => Ok(await Mediator.Send(new FetchTiposVeiculoQuery()));
 
         [HttpGet("ufs")]
-        public async Task<ActionResult> FetchUfs()
-        {
-            return Ok(await Mediator.Send(new FetchUfsQuery()));
-        }
+        public async Task<ActionResult> FetchUfs() => Ok(await Mediator.Send(new FetchUfsQuery()));
 
         [HttpPost]
         public async Task<ActionResult> Create(RegistrarOcorrenciaCommand command)
         {
-            await Mediator.Send(command);
-            return NoContent();
+            var id = await Mediator.Send(command);
+            return CreatedAtAction(nameof(Create), id);
         }
 
         [HttpDelete("{id}")]

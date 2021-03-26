@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using ProcedimentoCriminal.Reportacao.Application.Interfaces;
 using ProcedimentoCriminal.Reportacao.Domain.Interfaces;
 
 namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.DeletarOcorrencia
@@ -13,17 +14,17 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.Delet
     
     public class DeletarOcorrenciaCommandHandler : IRequestHandler<DeletarOcorrenciaCommand>
     {
-        private readonly IOcorrenciaRepository _repository;
+        private readonly IUnitOfWork _uow;
         
-        public DeletarOcorrenciaCommandHandler(IOcorrenciaRepository repository)
+        public DeletarOcorrenciaCommandHandler(IUnitOfWork uow)
         {
-            _repository = repository;
+            _uow = uow;
         }
         
         public async Task<Unit> Handle(DeletarOcorrenciaCommand request, CancellationToken cancellationToken)
         {
-            _repository.Delete(request.Id);
-            await _repository.SaveChangesAsync();
+            _uow.OcorrenciaRepository.Delete(request.Id);
+            await _uow.SaveChangesAsync();
 
             return Unit.Value;
         }

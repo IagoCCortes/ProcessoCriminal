@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using ProcedimentoCriminal.Core.Application.Models;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Core.Domain.Interfaces;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Services
 {

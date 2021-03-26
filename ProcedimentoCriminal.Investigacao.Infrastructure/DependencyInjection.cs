@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProcedimentoCriminal.Core.Application.Interfaces;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Core.Domain.Interfaces;
 using ProcedimentoCriminal.Investigacao.Infrastructure.Persistence;
 using ProcedimentoCriminal.Investigacao.Infrastructure.Services;
 

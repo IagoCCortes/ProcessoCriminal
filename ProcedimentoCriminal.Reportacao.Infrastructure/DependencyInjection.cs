@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProcedimentoCriminal.Core.Application.Interfaces;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Core.Domain.Interfaces;
+using ProcedimentoCriminal.Reportacao.Application.Interfaces;
 using ProcedimentoCriminal.Reportacao.Application.Interfaces.ReadRepositories;
 using ProcedimentoCriminal.Reportacao.Domain.Interfaces;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence;
@@ -19,7 +21,7 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure
         {
             var connectionString = configuration.GetSection("DapperSettings").GetSection("ConnectionString").Value;
             services.AddSingleton<IDapperConnectionFactory>(new DapperConnectionFactory(connectionString));
-            services.AddScoped<IOcorrenciaRepository>(provider => new OcorrenciaRepository(
+            services.AddScoped<IUnitOfWork>(provider => new UnitOfWork(
                 provider.GetRequiredService<IDapperConnectionFactory>(),
                 provider.GetRequiredService<IDomainEventService>(),
                 provider.GetRequiredService<ICurrentUserService>(),

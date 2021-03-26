@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Core.Domain.Interfaces;
 using ProcedimentoCriminal.Investigacao.Domain.Events;
 using ProcedimentoCriminal.Investigacao.Domain.ValueObjects;
 
@@ -38,7 +39,7 @@ namespace ProcedimentoCriminal.Investigacao.Domain.Entities
 
         public void VincularAnexo(IAnexo anexo)
         {
-            if (anexo == null) throw new DomainException("Nenhum anexo fornecido");
+            if (anexo == null) throw new DomainException(nameof(Anexos), "Nenhum anexo fornecido");
 
             Anexos.Add(anexo);
         }
@@ -50,7 +51,8 @@ namespace ProcedimentoCriminal.Investigacao.Domain.Entities
 
         public void VincularOcorrencia(Guid idOcorrencia)
         {
-            if (idOcorrencia == Guid.Empty) throw new DomainException("Nenhum identificador de Ocorrência passado");
+            if (idOcorrencia == Guid.Empty)
+                throw new DomainException(nameof(Ocorrencias), "Nenhum identificador de Ocorrência passado");
 
             Ocorrencias.Add(idOcorrencia);
         }

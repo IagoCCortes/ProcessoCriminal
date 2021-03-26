@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProcedimentoCriminal.Core.Application.Interfaces;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Core.Domain.Interfaces;
 using ProcedimentoCriminal.Investigacao.Application.Interfaces;
 using ProcedimentoCriminal.Investigacao.Domain.Entities;
 
@@ -35,11 +36,13 @@ namespace ProcedimentoCriminal.Investigacao.Infrastructure.Persistence
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.SetCreatedBy(_currentUserService.UserId);
+                        entry.Property("created_by").CurrentValue = _currentUserService.UserId;
+                        entry.Property("created").CurrentValue = _dateTime.UtcNow;
                         break;
 
                     case EntityState.Modified:
-                        entry.Entity.Update(_currentUserService.UserId);
+                        entry.Property("last_modified_by").CurrentValue = _currentUserService.UserId;
+                        entry.Property("last_modified").CurrentValue = _dateTime.UtcNow;
                         break;
                 }
             }

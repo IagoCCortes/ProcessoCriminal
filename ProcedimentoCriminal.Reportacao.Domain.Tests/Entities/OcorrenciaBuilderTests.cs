@@ -8,20 +8,8 @@ using Xunit;
 
 namespace ProcedimentoCriminal.Reportacao.Domain.Tests.Entities
 {
-    public class OcorrenciaTests
+    public class OcorrenciaBuilderTests
     {
-        private readonly Ocorrencia _ocorrencia;
-
-        public OcorrenciaTests()
-        {
-            _ocorrencia = new Ocorrencia("test", TipoOcorrencia.Flagrante, "dpTest", Natureza.Criminal, DateTime.Now,
-                DateTime.Now,
-                new Endereco(123, string.Empty, string.Empty, String.Empty, String.Empty, String.Empty, String.Empty),
-                false, false, String.Empty, String.Empty, new List<PessoaEnvolvida>(),
-                new List<VeiculoEnvolvido>
-                    {new VeiculoEnvolvido(Orgao.PM, String.Empty, String.Empty, String.Empty, String.Empty)});
-        }
-
         // [Fact]
         // public void VincularInquerito_GivenEmptyGuid_ThrowsDomainException()
         // {
@@ -31,7 +19,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Tests.Entities
         //     // act & asset
         //     action.Should().Throw<DomainException>();
         // }
-        //
+        
         // [Fact]
         // public void VincularInquerito_GivenGuid_ShouldSetIdInquerito()
         // {

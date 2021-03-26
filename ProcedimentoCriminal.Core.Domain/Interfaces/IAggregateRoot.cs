@@ -1,4 +1,4 @@
-﻿namespace ProcedimentoCriminal.Core.Domain
+﻿namespace ProcedimentoCriminal.Core.Domain.Interfaces
 {
     public interface IAggregateRoot
     {

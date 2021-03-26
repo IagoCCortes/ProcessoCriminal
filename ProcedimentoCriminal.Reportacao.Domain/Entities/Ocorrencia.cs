@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Core.Domain.Interfaces;
 using ProcedimentoCriminal.Reportacao.Domain.Entities.OcorrenciaBuilderValidator;
 using ProcedimentoCriminal.Reportacao.Domain.Enums;
 using ProcedimentoCriminal.Reportacao.Domain.Events;
@@ -64,6 +65,7 @@ namespace ProcedimentoCriminal.Reportacao.Domain.Entities
                     Natureza.Furtos or Natureza.EstelionatoFraudesApropriacoes => new ValidadorApropriacaoIndevida(_ocorrencia),
                     Natureza.ExtravioPerda => new ValidadorExtravioPerda(_ocorrencia),
                     Natureza.AcidenteTransitoSemVitimas => new ValidadorAcidenteDeTransitoSemVitimas(_ocorrencia),
+                    _ => null,
                 };
 
                 return this;

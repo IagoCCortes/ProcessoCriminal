@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using Dapper;
 using ProcedimentoCriminal.Core.Application.Interfaces;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Core.Domain.Interfaces;
+using ProcedimentoCriminal.Reportacao.Application.Interfaces;
+using ProcedimentoCriminal.Reportacao.Domain.Interfaces;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Interfaces;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteRepositories;
@@ -16,9 +19,11 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence
         private readonly IDomainEventService _domainEventService;
         private readonly ICurrentUserService _currentUserService;
         private readonly IDateTime _dateTime;
-        internal readonly List<(string sql, DatabaseEntity dbEntity, ChangeType changeType)> Changes;
+        private readonly List<(string sql, DatabaseEntity dbEntity, ChangeType changeType)> _changes;
 
         private OcorrenciaRepository _ocorrenciaRepository;
+
+        public IOcorrenciaRepository OcorrenciaRepository => _ocorrenciaRepository ??= new OcorrenciaRepository(_changes);
 
         public UnitOfWork(IDapperConnectionFactory connectionFactory,
             IDomainEventService domainEventService,
@@ -28,16 +33,16 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence
             _domainEventService = domainEventService;
             _currentUserService = currentUserService;
             _dateTime = dateTime;
-            Changes = new List<(string sql, DatabaseEntity dbEntity, ChangeType changeType)>();
+            _changes = new List<(string sql, DatabaseEntity dbEntity, ChangeType changeType)>();
         }
-        
+
         public async Task<int> SaveChangesAsync()
         {
             using var connection = await _connectionFactory.CreateConnectionAsync();
             using var transaction = connection.BeginTransaction();
             var affectedRows = 0;
 
-            foreach (var change in Changes)
+            foreach (var change in _changes)
             {
                 switch (change.changeType)
                 {
@@ -60,10 +65,10 @@ namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence
 
             return affectedRows;
         }
-        
+
         private async Task DispatchEvents()
         {
-            var domainEvents = Changes.Where(c => c.dbEntity.HasDomainEvents())
+            var domainEvents = _changes.Where(c => c.dbEntity.HasDomainEvents())
                 .SelectMany(c => c.dbEntity.DomainEvents());
 
             foreach (var domainEvent in domainEvents)

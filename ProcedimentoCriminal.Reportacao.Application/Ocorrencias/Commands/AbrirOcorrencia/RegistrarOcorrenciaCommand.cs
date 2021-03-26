@@ -6,6 +6,7 @@ using AutoMapper;
 using MediatR;
 using ProcedimentoCriminal.Core.Application.Interfaces;
 using ProcedimentoCriminal.Core.Domain;
+using ProcedimentoCriminal.Reportacao.Application.Interfaces;
 using ProcedimentoCriminal.Reportacao.Domain.Entities;
 using ProcedimentoCriminal.Reportacao.Domain.Enums;
 using ProcedimentoCriminal.Reportacao.Domain.Interfaces;
@@ -13,7 +14,7 @@ using ProcedimentoCriminal.Reportacao.Domain.ValueObjects;
 
 namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.AbrirOcorrencia
 {
-    public class RegistrarOcorrenciaCommand : IRequest
+    public class RegistrarOcorrenciaCommand : IRequest<Guid>
     {
         public int DelegaciaPoliciaApuracaoNumero { get; set; }
         public int DelegaciaPoliciaApuracaoUf { get; set; }
@@ -26,20 +27,20 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.Abrir
         public List<PessoaEnvolvidaDto> PessoasEnvolvidas { get; set; }
     }
 
-    public class RegistrarOcorrenciaCommandHandler : IRequestHandler<RegistrarOcorrenciaCommand>
+    public class RegistrarOcorrenciaCommandHandler : IRequestHandler<RegistrarOcorrenciaCommand, Guid>
     {
-        private readonly IOcorrenciaRepository _repository;
+        private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
         private readonly IDateTime _dateTime;
 
-        public RegistrarOcorrenciaCommandHandler(IOcorrenciaRepository repository, IMapper mapper, IDateTime dateTime)
+        public RegistrarOcorrenciaCommandHandler(IUnitOfWork uow, IMapper mapper, IDateTime dateTime)
         {
-            _repository = repository;
+            _uow = uow;
             _mapper = mapper;
             _dateTime = dateTime;
         }
 
-        public async Task<Unit> Handle(RegistrarOcorrenciaCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(RegistrarOcorrenciaCommand request, CancellationToken cancellationToken)
         {
             var localFato = _mapper.Map<Endereco>(request.LocalFato);
 
@@ -80,9 +81,10 @@ namespace ProcedimentoCriminal.Reportacao.Application.Ocorrencias.Commands.Abrir
             foreach (var meio in request.MeiosEmpregados)
                 ocorrenciaBuilder.VincularMeioEmpregado((MeioEmpregado) meio);
 
-            _repository.Insert(ocorrenciaBuilder.Build());
-            await _repository.SaveChangesAsync();
-            return Unit.Value;
+            var ocorrencia = ocorrenciaBuilder.Build();
+            _uow.OcorrenciaRepository.Insert(ocorrencia);
+            await _uow.SaveChangesAsync();
+            return ocorrencia.Id;
         }
     }
 }

@@ -1,18 +1,16 @@
 ﻿using System;
-using ProcedimentoCriminal.Core.Application.Interfaces;
-using ProcedimentoCriminal.Core.Domain;
+using System.Collections.Generic;
 using ProcedimentoCriminal.Reportacao.Domain.Entities;
 using ProcedimentoCriminal.Reportacao.Domain.Interfaces;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Daos;
 using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Helper;
-using ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.Interfaces;
 
 namespace ProcedimentoCriminal.Reportacao.Infrastructure.Persistence.WriteRepositories
 {
     public class OcorrenciaRepository : GenericWriteRepository<Ocorrencia>, IOcorrenciaRepository
     {
-        public OcorrenciaRepository(IDapperConnectionFactory connectionFactory, IDomainEventService domainEventService,
-            ICurrentUserService currentUserService, IDateTime dateTime) : base(connectionFactory, domainEventService, currentUserService, dateTime)
+        public OcorrenciaRepository(List<(string sql, DatabaseEntity dbEntity, ChangeType changeType)> changes) :
+            base(changes)
         {
         }
 
